@@ -22,7 +22,7 @@ public class GameControllerImpl implements GameController {
     private void init() {
         GameState state = GameState.MAIN_MENU;
         while (state != GameState.GAME) {
-            int playerCommand = view.draw(state);
+            int playerCommand = view.draw(state, gameModel.getCategories());
             switch (state) {
                 case MAIN_MENU -> {
                     switch (playerCommand) {
