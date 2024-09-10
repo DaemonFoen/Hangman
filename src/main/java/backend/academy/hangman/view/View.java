@@ -10,7 +10,7 @@ public interface View {
 
     Character draw(Session session);
 
-    Character drawRetry(Session session);
+    Character drawEnd(Session session, boolean isWin);
 
     void printError(String error);
 }

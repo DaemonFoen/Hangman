@@ -124,13 +124,13 @@ public class Screens {
                 """;
     }
 
-    public static String getGameView(Session session, boolean isOver) {
+    public static String getGameView(Session session) {
         return """
             #########################################################
             #                                                       #
             #                === Hangman Game ===                   #
             #                                                       #
-            """ + stages[6 - session.attempts()] + """
+            """ + stages[stages.length - 1 - session.attempts()] + """
             #                                                       #
             """ + drawWord(session.word(), session.usedChars()) +
             """
@@ -141,7 +141,28 @@ public class Screens {
                 """ + drawAttempts(session.attempts()) +
             """
                 #                                                       #
-                """ + drawRetry(isOver) +
+                #########################################################
+                """;
+    }
+
+    public static String getEndView(Session session, boolean isWin) {
+        return """
+            #########################################################
+            #                                                       #
+            #                === Hangman Game ===                   #
+            #                                                       #
+            """ + stages[stages.length - 1 - session.attempts()] + """
+            #                                                       #
+            """ + drawWord(session.word(), session.usedChars()) +
+            """
+                #                                                       #
+                """ + drawAlphabetDisplay(session.usedChars()) +
+            """
+                #                                                       #
+                """ + drawAttempts(session.attempts()) +
+            """
+                #                                                       #
+                """ + drawEnding(isWin) +
             """
                 #                                                       #
                 #########################################################
@@ -192,11 +213,12 @@ public class Screens {
             + "#\n";
     }
 
-    private static String drawRetry(boolean flag) {
-        if (!flag) {
-            return "";
+    private static String drawEnding(boolean isWin) {
+        if (isWin) {
+            return "#" + " ".repeat(14) + "You win, play again?(y/n)" + " ".repeat(16) + "#\n";
+        } else {
+            return "#" + " ".repeat(21) + "Retry?(y/n)" + " ".repeat(23) + "#\n";
         }
-        return "#" + " ".repeat(21) + "Retry?(y/n)" + " ".repeat(23) + "#\n";
     }
 
     public static String drawCategories(List<String> categories) {

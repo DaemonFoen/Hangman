@@ -33,6 +33,11 @@ public class GameModelImpl implements GameModel {
         return mapStateToSession(state.process(input));
     }
 
+    @Override
+    public boolean gameIsWon() {
+        return state.gameIsWon();
+    }
+
     private Session mapStateToSession(State state) {
         return new Session(state.word(), state.attempts(), state.usedChars());
     }

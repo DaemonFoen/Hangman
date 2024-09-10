@@ -67,10 +67,10 @@ public class GameControllerImpl implements GameController {
         init();
         Session session = gameModel.start(difficulty, category);
 
-        while (session.attempts() != 0) {
+        while (session.attempts() != 0 && !gameModel.gameIsWon()) {
             session = gameModel.process(view.draw(session));
         }
-        Character answer = view.drawRetry(session);
-        return answer == 'Y';
+
+        return 'Y' == (gameModel.gameIsWon() ? view.drawEnd(session, true) : view.drawEnd(session, false));
     }
 }

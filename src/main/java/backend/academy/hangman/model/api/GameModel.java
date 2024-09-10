@@ -11,4 +11,6 @@ public interface GameModel {
     Session start(GAME_LEVEL level, String category);
 
     Session process(Character input);
+
+    boolean gameIsWon();
 }

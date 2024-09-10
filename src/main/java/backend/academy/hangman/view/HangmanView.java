@@ -21,18 +21,16 @@ public class HangmanView implements View {
 
     private final PrintWriter writer;
 
-    public HangmanView() {
+    public HangmanView() throws IOException {
         try {
             terminal = TerminalBuilder.terminal();
             lineReader = LineReaderBuilder.builder().terminal(terminal).build();
             writer = terminal.writer();
         } catch (IOException e) {
             log.error(e.getMessage());
-            throw new RuntimeException(e);
+            throw e;
         }
     }
-
-
 
     private void clearScreen() {
         terminal.puts(Capability.clear_screen);
@@ -46,6 +44,7 @@ public class HangmanView implements View {
                 case MAIN_MENU -> writer.println(Screens.MENU);
                 case DIFFICULTY -> writer.println(Screens.DIFFICULT_MENU);
                 case CATEGORY -> writer.println(Screens.getCategoryMenu(categories));
+                case GAME -> throw new IllegalStateException("State GAME cannot be in main menu");
             }
             try {
                 int ans = Integer.parseInt(lineReader.readLine());
@@ -61,7 +60,7 @@ public class HangmanView implements View {
 
     @Override
     public Character draw(Session session) {
-        writer.println(Screens.getGameView(session, false));
+        writer.println(Screens.getGameView(session));
 
         while (true) {
             String ans = lineReader.readLine();
@@ -69,18 +68,19 @@ public class HangmanView implements View {
                 if (!session.usedChars().contains(Character.toUpperCase(ans.toCharArray()[0]))) {
                     return Character.toUpperCase(ans.toCharArray()[0]);
                 } else {
-                    writer.println(Screens.getGameView(session, false));
+                    writer.println(Screens.getGameView(session));
                     printError("Letter is already in use");
                 }
             } else {
-                writer.println(Screens.getGameView(session, false));
+                writer.println(Screens.getGameView(session));
                 printError("Incorrect answer. Try again.");
             }
         }
     }
 
     @Override
-    public Character drawRetry(Session session) {
+    public Character drawEnd(Session session, boolean isWin) {
+        writer.println(Screens.getEndView(session, isWin));
 
         while (true) {
             String ans = lineReader.readLine();
@@ -89,11 +89,10 @@ public class HangmanView implements View {
                 || Character.toUpperCase(ans.toCharArray()[0]) == 'N')) {
                 return Character.toUpperCase(ans.toCharArray()[0]);
             } else {
-                writer.println(Screens.getGameView(session, true));
+                writer.println(Screens.getEndView(session, isWin));
                 printError("Incorrect answer. Try again.");
             }
         }
-
     }
 
     @Override
