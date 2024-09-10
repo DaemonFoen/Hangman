@@ -1,0 +1,276 @@
+{
+    "categories": {
+        "animals": {
+            "easy": [
+                {
+                    "word": "cat",
+                    "hint": "A small domesticated carnivorous mammal."
+                },
+                {
+                    "word": "dog",
+                    "hint": "Man's best friend."
+                },
+                {
+                    "word": "cow",
+                    "hint": "A large domesticated ungulate with horns."
+                },
+                {
+                    "word": "bat",
+                    "hint": "A nocturnal flying mammal."
+                },
+                {
+                    "word": "ant",
+                    "hint": "A small insect that lives in colonies."
+                }
+            ],
+            "medium": [
+                {
+                    "word": "tiger",
+                    "hint": "A large carnivorous feline with a striped coat."
+                },
+                {
+                    "word": "zebra",
+                    "hint": "A wild horse with black-and-white stripes."
+                },
+                {
+                    "word": "eagle",
+                    "hint": "A large bird of prey with excellent vision."
+                },
+                {
+                    "word": "rabbit",
+                    "hint": "A small burrowing mammal with long ears."
+                },
+                {
+                    "word": "giraffe",
+                    "hint": "The tallest living terrestrial animal."
+                }
+            ],
+            "hard": [
+                {
+                    "word": "crocodile",
+                    "hint": "A large aquatic reptile with a long snout."
+                },
+                {
+                    "word": "chimpanzee",
+                    "hint": "A highly intelligent primate, closely related to humans."
+                },
+                {
+                    "word": "hippopotamus",
+                    "hint": "A large, mostly herbivorous mammal living in rivers."
+                },
+                {
+                    "word": "rhinoceros",
+                    "hint": "A large herbivorous mammal with a horn on its nose."
+                },
+                {
+                    "word": "platypus",
+                    "hint": "An egg-laying mammal with a duck-like bill."
+                }
+            ]
+        },
+        "fruits": {
+            "easy": [
+                {
+                    "word": "apple",
+                    "hint": "A common fruit with red, green, or yellow skin."
+                },
+                {
+                    "word": "pear",
+                    "hint": "A sweet fruit with a round body and a narrow top."
+                },
+                {
+                    "word": "plum",
+                    "hint": "A small fruit with a smooth skin and a pit."
+                },
+                {
+                    "word": "kiwi",
+                    "hint": "A small brown fruit with green flesh and tiny black seeds."
+                },
+                {
+                    "word": "grape",
+                    "hint": "A small, juicy fruit often used to make wine."
+                }
+            ],
+            "medium": [
+                {
+                    "word": "banana",
+                    "hint": "A long, curved fruit with a yellow skin."
+                },
+                {
+                    "word": "mango",
+                    "hint": "A tropical fruit with orange flesh and a large pit."
+                },
+                {
+                    "word": "orange",
+                    "hint": "A citrus fruit with a tough, orange skin."
+                },
+                {
+                    "word": "peach",
+                    "hint": "A soft fruit with fuzzy skin and a large stone inside."
+                },
+                {
+                    "word": "apricot",
+                    "hint": "A small, orange fruit related to the peach."
+                }
+            ],
+            "hard": [
+                {
+                    "word": "pomegranate",
+                    "hint": "A fruit with a tough outer layer and many seeds inside."
+                },
+                {
+                    "word": "pineapple",
+                    "hint": "A tropical fruit with rough, spiky skin."
+                },
+                {
+                    "word": "cantaloupe",
+                    "hint": "A type of melon with orange flesh and a rough rind."
+                },
+                {
+                    "word": "blackberry",
+                    "hint": "A small, dark fruit composed of multiple drupelets."
+                },
+                {
+                    "word": "strawberry",
+                    "hint": "A red fruit with seeds on its surface."
+                }
+            ]
+        },
+        "countries": {
+            "easy": [
+                {
+                    "word": "China",
+                    "hint": "The most populous country in the world."
+                },
+                {
+                    "word": "India",
+                    "hint": "The second most populous country in the world."
+                },
+                {
+                    "word": "Brazil",
+                    "hint": "The largest country in South America."
+                },
+                {
+                    "word": "Egypt",
+                    "hint": "A country known for its ancient pyramids."
+                },
+                {
+                    "word": "Italy",
+                    "hint": "A European country shaped like a boot."
+                }
+            ],
+            "medium": [
+                {
+                    "word": "Canada",
+                    "hint": "The second-largest country by land area."
+                },
+                {
+                    "word": "Mexico",
+                    "hint": "A country in North America south of the United States."
+                },
+                {
+                    "word": "Sweden",
+                    "hint": "A Scandinavian country known for its fjords and forests."
+                },
+                {
+                    "word": "Russia",
+                    "hint": "The largest country in the world by area."
+                },
+                {
+                    "word": "Norway",
+                    "hint": "A Scandinavian country with a long coastline."
+                }
+            ],
+            "hard": [
+                {
+                    "word": "Venezuela",
+                    "hint": "A country in South America with vast oil reserves."
+                },
+                {
+                    "word": "Kazakhstan",
+                    "hint": "A large country in Central Asia, once part of the Soviet Union."
+                },
+                {
+                    "word": "Switzerland",
+                    "hint": "A landlocked country in Europe known for its neutrality."
+                },
+                {
+                    "word": "Bangladesh",
+                    "hint": "A densely populated country in South Asia."
+                },
+                {
+                    "word": "Netherlands",
+                    "hint": "A European country known for its windmills and tulips."
+                }
+            ]
+        },
+        "colors": {
+            "easy": [
+                {
+                    "word": "red",
+                    "hint": "The color of blood and fire."
+                },
+                {
+                    "word": "blue",
+                    "hint": "The color of the sky and the ocean."
+                },
+                {
+                    "word": "green",
+                    "hint": "The color of grass and leaves."
+                },
+                {
+                    "word": "pink",
+                    "hint": "A pale red color often associated with flowers."
+                },
+                {
+                    "word": "black",
+                    "hint": "The color associated with the absence of light."
+                }
+            ],
+            "medium": [
+                {
+                    "word": "yellow",
+                    "hint": "The color of the sun and bananas."
+                },
+                {
+                    "word": "purple",
+                    "hint": "A color that is a mix of red and blue."
+                },
+                {
+                    "word": "orange",
+                    "hint": "A color and also a fruit."
+                },
+                {
+                    "word": "indigo",
+                    "hint": "A deep color between blue and violet."
+                },
+                {
+                    "word": "silver",
+                    "hint": "A shiny, metallic color."
+                }
+            ],
+            "hard": [
+                {
+                    "word": "turquoise",
+                    "hint": "A blue-green color named after a gemstone."
+                },
+                {
+                    "word": "lavender",
+                    "hint": "A pale purple color named after a flower."
+                },
+                {
+                    "word": "burgundy",
+                    "hint": "A deep red color named after a wine."
+                },
+                {
+                    "word": "magenta",
+                    "hint": "A vibrant color that is a mix of red and purple."
+                },
+                {
+                    "word": "aquamarine",
+                    "hint": "A pale blue-green color, like the sea."
+                }
+            ]
+        }
+    }
+}
