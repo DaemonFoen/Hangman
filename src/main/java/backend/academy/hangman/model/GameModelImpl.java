@@ -14,8 +14,8 @@ public class GameModelImpl implements GameModel {
     private final WordsRepository wordsRepository;
     private State state;
 
-    public GameModelImpl() {
-        this.wordsRepository = SourceLoader.load();
+    public GameModelImpl(String sourceFilePath) {
+        this.wordsRepository = SourceLoader.load(sourceFilePath);
     }
 
     @Override

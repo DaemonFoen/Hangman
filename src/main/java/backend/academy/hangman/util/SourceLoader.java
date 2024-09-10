@@ -11,12 +11,10 @@ import lombok.extern.log4j.Log4j2;
 @UtilityClass
 public class SourceLoader {
 
-    private static final String SOURCE_PATH = "src/main/resources/words.json";
-
-    public static HangmanWords load() {
+    public HangmanWords load(String sourcePath) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return objectMapper.readValue(new File(SOURCE_PATH), HangmanWords.class);
+            return objectMapper.readValue(new File(sourcePath), HangmanWords.class);
         } catch (IOException e) {
             log.error(e);
             log.error("Failed to load words.json");

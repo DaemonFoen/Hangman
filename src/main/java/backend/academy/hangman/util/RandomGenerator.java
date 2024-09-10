@@ -6,11 +6,11 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class RandomGenerator {
 
-    private static final SecureRandom random = new SecureRandom();
+    private static final SecureRandom RANDOM = new SecureRandom();
 
     public static int getRandomNumber() {
         try {
-            return Math.absExact(random.nextInt());
+            return Math.absExact(RANDOM.nextInt());
         } catch (ArithmeticException e) {
             return 42;
         }
