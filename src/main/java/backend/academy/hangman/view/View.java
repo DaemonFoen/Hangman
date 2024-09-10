@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface View {
 
-    int draw(GameState state, List<String> categorise);
+    int drawMenu(GameState state, List<String> categorise);
 
-    Character draw(Session session);
+    Character drawGame(Session session);
 
     Character drawEnd(Session session, boolean isWin);
 

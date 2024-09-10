@@ -38,7 +38,7 @@ public class HangmanView implements View {
     }
 
     @Override
-    public int draw(GameState state, List<String> categories) {
+    public int drawMenu(GameState state, List<String> categories) {
         while (true) {
             switch (state) {
                 case MAIN_MENU -> writer.println(Screens.MENU);
@@ -59,7 +59,7 @@ public class HangmanView implements View {
     }
 
     @Override
-    public Character draw(Session session) {
+    public Character drawGame(Session session) {
         writer.println(Screens.getGameView(session));
 
         while (true) {

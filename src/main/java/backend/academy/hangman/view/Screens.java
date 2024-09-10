@@ -141,6 +141,9 @@ public class Screens {
                 """ + drawAttempts(session.attempts()) +
             """
                 #                                                       #
+                """ + (session.attempts() > 3 ? "" : drawHint(session.hint())) +
+            """
+                #                                                       #
                 #########################################################
                 """;
     }
@@ -189,7 +192,7 @@ public class Screens {
     private static String drawAlphabetDisplay(Set<Character> usedLetters) {
         Character[] alphabet = new Character[26];
         for (int i = 0; i < 26; i++) {
-            alphabet[i] = Character.valueOf((char) ('A' + i));
+            alphabet[i] = (char) ('A' + i);
         }
         StringBuilder template = new StringBuilder();
 
@@ -219,6 +222,22 @@ public class Screens {
         } else {
             return "#" + " ".repeat(21) + "Retry?(y/n)" + " ".repeat(23) + "#\n";
         }
+    }
+
+    private static String drawHint(String hint) {
+        int totalWidth = 57;
+        int paddingSpace = totalWidth - 8;
+        StringBuilder result = new StringBuilder();
+        int start = 0;
+        while (start < hint.length()) {
+            int end = Math.min(start + paddingSpace, hint.length());
+            String line = hint.substring(start, end);
+            int paddingRight = paddingSpace - line.length();
+            result.append("#    ").append(line).append(" ".repeat(paddingRight)).append("  #\n");
+            start += paddingSpace;
+        }
+
+        return result.toString();
     }
 
     public static String drawCategories(List<String> categories) {

@@ -6,7 +6,9 @@ import backend.academy.hangman.model.data.GAME_LEVEL;
 import backend.academy.hangman.model.data.api.WordsRepository;
 import backend.academy.hangman.util.SourceLoader;
 import java.util.List;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 public class GameModelImpl implements GameModel {
 
     private final WordsRepository wordsRepository;
@@ -25,6 +27,7 @@ public class GameModelImpl implements GameModel {
     public Session start(GAME_LEVEL level, String category) {
         state = new State(
             category == null ? wordsRepository.getRandomCategoryWord(level) : wordsRepository.getWord(level, category));
+        log.debug("Word: {}", state.word());
         return mapStateToSession(state);
     }
 
@@ -39,6 +42,6 @@ public class GameModelImpl implements GameModel {
     }
 
     private Session mapStateToSession(State state) {
-        return new Session(state.word(), state.attempts(), state.usedChars());
+        return new Session(state.word(), state.hint(), state.attempts(), state.usedChars());
     }
 }

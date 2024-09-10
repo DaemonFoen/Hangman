@@ -3,12 +3,11 @@ package backend.academy.hangman.controller;
 import backend.academy.hangman.model.api.GameModel;
 import backend.academy.hangman.model.data.GAME_LEVEL;
 import backend.academy.hangman.view.View;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 public class GameControllerImpl implements GameController {
 
-    @Getter @Setter
     private GAME_LEVEL difficulty = GAME_LEVEL.EASY;
     private String category;
     private final GameModel gameModel;
@@ -19,10 +18,10 @@ public class GameControllerImpl implements GameController {
         this.view = view;
     }
 
-    private void init() {
+    private void menu() {
         GameState state = GameState.MAIN_MENU;
         while (state != GameState.GAME) {
-            int playerCommand = view.draw(state, gameModel.getCategories());
+            int playerCommand = view.drawMenu(state, gameModel.getCategories());
             switch (state) {
                 case MAIN_MENU -> {
                     switch (playerCommand) {
@@ -64,11 +63,12 @@ public class GameControllerImpl implements GameController {
     }
 
     public boolean start() {
-        init();
+        menu();
         Session session = gameModel.start(difficulty, category);
 
         while (session.attempts() != 0 && !gameModel.gameIsWon()) {
-            session = gameModel.process(view.draw(session));
+            session = gameModel.process(view.drawGame(session));
+            log.debug("Game status: win: {}, used chars: {}", gameModel.gameIsWon(), session.usedChars());
         }
 
         return 'Y' == (gameModel.gameIsWon() ? view.drawEnd(session, true) : view.drawEnd(session, false));
