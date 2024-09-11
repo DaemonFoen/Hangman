@@ -11,7 +11,9 @@ class SourceLoaderTest {
     @Test
     void testLoadSuccess() {
         HangmanWords result = SourceLoader.load("src/test/java/resources/words.json");
+
         assertEquals("animals", result.getCategories().getFirst());
+
         assertEquals("cat", result.getWord(GAME_LEVEL.valueOf("EASY"), "animals").word());
     }
 

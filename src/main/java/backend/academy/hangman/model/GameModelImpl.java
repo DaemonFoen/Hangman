@@ -33,6 +33,10 @@ public class GameModelImpl implements GameModel {
 
     @Override
     public Session process(Character input) {
+        if (state == null) {
+            log.error("Game has not been started");
+            throw new IllegalStateException("Game has not been started");
+        }
         return mapStateToSession(state.process(input));
     }
 
