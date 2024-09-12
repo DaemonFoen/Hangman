@@ -2,14 +2,11 @@ package backend.academy.hangman.view;
 
 import backend.academy.hangman.controller.GameState;
 import backend.academy.hangman.controller.Session;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import lombok.extern.log4j.Log4j2;
 import org.jline.reader.LineReader;
-import org.jline.reader.LineReaderBuilder;
 import org.jline.terminal.Terminal;
-import org.jline.terminal.TerminalBuilder;
 import org.jline.utils.InfoCmp.Capability;
 
 @Log4j2
@@ -21,15 +18,10 @@ public class HangmanView implements View {
 
     private final PrintWriter writer;
 
-    public HangmanView() throws IOException {
-        try {
-            terminal = TerminalBuilder.terminal();
-            lineReader = LineReaderBuilder.builder().terminal(terminal).build();
-            writer = terminal.writer();
-        } catch (IOException e) {
-            log.error(e.getMessage());
-            throw e;
-        }
+    public HangmanView(Terminal terminal, LineReader lineReader, PrintWriter writer) {
+        this.terminal = terminal;
+        this.lineReader = lineReader;
+        this.writer = writer;
     }
 
     private void clearScreen() {
