@@ -108,6 +108,7 @@ public class Screens {
         #########################################################
         """;
 
+    @SuppressWarnings("all")
     public static String getCategoryMenu(List<String> categories) {
         return """
         #########################################################
@@ -124,6 +125,7 @@ public class Screens {
                 """;
     }
 
+    @SuppressWarnings("all")
     public static String getGameView(Session session) {
         return """
             #########################################################
@@ -212,7 +214,7 @@ public class Screens {
     }
 
     private static String drawAttempts(int attempts) {
-        return "#" + " ".repeat(21) + "Attemps: " + attempts + " ".repeat(24)
+        return "#" + " ".repeat(21) + "Attempts: " + attempts + " ".repeat(23)
             + "#\n";
     }
 

@@ -18,6 +18,7 @@ public class GameControllerImpl implements GameController {
         this.view = view;
     }
 
+    @SuppressWarnings("all")
     private void menu() {
         GameState state = GameState.MAIN_MENU;
         while (state != GameState.GAME) {
