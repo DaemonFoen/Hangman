@@ -11,12 +11,13 @@ public class State {
     private final String word;
     private final String hint;
     private final Set<Character> wordCharacters;
-    private int attempts = 6;
+    private int attempts;
     private final Set<Character> usedChars = new HashSet<>();
 
-    public State(Word word) {
+    public State(Word word, int attempts) {
         this.word = word.word().toUpperCase();
         this.hint = word.hint();
+        this.attempts = attempts;
         this.wordCharacters = getWordCharacters(this.word.toCharArray());
     }
 
@@ -42,7 +43,7 @@ public class State {
     }
 
     private Set<Character> getWordCharacters(char[] chars) {
-        Set<Character> characters = new HashSet<>();
+        Set<Character> characters = HashSet.newHashSet(chars.length);
         for (var ch : chars) {
             characters.add(ch);
         }

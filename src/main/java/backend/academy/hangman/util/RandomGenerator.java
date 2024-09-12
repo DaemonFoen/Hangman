@@ -12,7 +12,7 @@ public class RandomGenerator {
         try {
             return Math.absExact(RANDOM.nextInt());
         } catch (ArithmeticException e) {
-            return 42;
+            return Integer.MAX_VALUE;
         }
     }
 }

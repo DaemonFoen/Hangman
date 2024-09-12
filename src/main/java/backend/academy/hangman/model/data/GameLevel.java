@@ -1,5 +1,5 @@
 package backend.academy.hangman.model.data;
 
-public enum GAME_LEVEL {
+public enum GameLevel {
     EASY, MEDIUM, HIGH
 }

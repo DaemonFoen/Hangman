@@ -16,13 +16,17 @@ public class Main {
 
     @SuppressWarnings("all")
     public static void main(String[] args) throws IOException {
-        GameModelImpl gameModel = new GameModelImpl("src/main/resources/words.json");
+        GameModelImpl gameModel = new GameModelImpl("src/main/resources/words.json", 6);
         Terminal terminal = TerminalBuilder.terminal();
         LineReader lineReader = LineReaderBuilder.builder().terminal(terminal).build();
         PrintWriter writer = terminal.writer();
         HangmanView game2 = new HangmanView(terminal, lineReader, writer);
         GameControllerImpl gc = new GameControllerImpl(gameModel, game2);
-        while (gc.start())
-            ;
+        try {
+            while (gc.start())
+                ;
+        } catch (RuntimeException e) {
+
+        }
     }
 }

@@ -6,9 +6,10 @@ import java.util.Set;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
+@SuppressWarnings("all")
 public class Screens {
 
-    private static final String[] stages = {
+    private static final String[] STAGES = {
         """
             #                    +---+                              #
             #                    |   |                              #
@@ -108,16 +109,15 @@ public class Screens {
         #########################################################
         """;
 
-    @SuppressWarnings("all")
     public static String getCategoryMenu(List<String> categories) {
         return """
-        #########################################################
-        #                                                       #
-        #              === Hangman Categories ===               #
-        #                                                       #
-        #          Please select a category:                    #
-        #                                                       #
-                """ + drawCategories(categories) +
+            #########################################################
+            #                                                       #
+            #              === Hangman Categories ===               #
+            #                                                       #
+            #          Please select a category:                    #
+            #                                                       #
+                    """ + drawCategories(categories) +
 
             """
                 #                                                       #
@@ -125,14 +125,13 @@ public class Screens {
                 """;
     }
 
-    @SuppressWarnings("all")
     public static String getGameView(Session session) {
         return """
             #########################################################
             #                                                       #
             #                === Hangman Game ===                   #
             #                                                       #
-            """ + stages[stages.length - 1 - session.attempts()] + """
+            """ + STAGES[STAGES.length - 1 - session.attempts()] + """
             #                                                       #
             """ + drawWord(session.word(), session.usedChars()) +
             """
@@ -156,18 +155,22 @@ public class Screens {
             #                                                       #
             #                === Hangman Game ===                   #
             #                                                       #
-            """ + stages[stages.length - 1 - session.attempts()] + """
+            """ + STAGES[STAGES.length - 1 - session.attempts()] + """
             #                                                       #
-            """ + drawWord(session.word(), session.usedChars()) +
+            """ + drawWord(session.word(), session.usedChars())
+            +
             """
                 #                                                       #
-                """ + drawAlphabetDisplay(session.usedChars()) +
+                """ + drawAlphabetDisplay(session.usedChars())
+            +
             """
                 #                                                       #
-                """ + drawAttempts(session.attempts()) +
+                """ + drawAttempts(session.attempts())
+            +
             """
                 #                                                       #
-                """ + drawEnding(isWin) +
+                """ + drawEnding(isWin)
+            +
             """
                 #                                                       #
                 #########################################################

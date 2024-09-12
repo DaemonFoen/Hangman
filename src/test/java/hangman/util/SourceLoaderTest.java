@@ -1,6 +1,6 @@
 package hangman.util;
 
-import backend.academy.hangman.model.data.GAME_LEVEL;
+import backend.academy.hangman.model.data.GameLevel;
 import backend.academy.hangman.model.data.HangmanWords;
 import backend.academy.hangman.util.SourceLoader;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,7 @@ class SourceLoaderTest {
 
         assertEquals("animals", result.getCategories().getFirst());
 
-        assertEquals("cat", result.getWord(GAME_LEVEL.valueOf("EASY"), "animals").word());
+        assertEquals("cat", result.getWord(GameLevel.valueOf("EASY"), "animals").word());
     }
 
 }

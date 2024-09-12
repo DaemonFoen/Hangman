@@ -5,20 +5,8 @@ package backend.academy.hangman.exception;
  */
 public class SourceLoadException extends RuntimeException {
 
-    public SourceLoadException() {
-        super();
-    }
-
     public SourceLoadException(String message) {
         super(message);
-    }
-
-    public SourceLoadException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public SourceLoadException(Throwable cause) {
-        super(cause);
     }
 
 }

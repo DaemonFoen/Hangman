@@ -36,7 +36,7 @@ public class HangmanView implements View {
                 case MAIN_MENU -> writer.println(Screens.MENU);
                 case DIFFICULTY -> writer.println(Screens.DIFFICULT_MENU);
                 case CATEGORY -> writer.println(Screens.getCategoryMenu(categories));
-                case GAME -> throw new IllegalStateException("State GAME cannot be in main menu");
+                default -> throw new IllegalStateException("State GAME cannot be in main menu");
             }
             try {
                 int ans = Integer.parseInt(lineReader.readLine());
@@ -65,7 +65,7 @@ public class HangmanView implements View {
                 }
             } else {
                 writer.println(Screens.getGameView(session));
-                printError("Incorrect answer. Try again.");
+                printError("Incorrect answer, only letters are valid values. Try again.");
             }
         }
     }

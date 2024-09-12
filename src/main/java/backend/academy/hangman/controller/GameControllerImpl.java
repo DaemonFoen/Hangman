@@ -1,14 +1,14 @@
 package backend.academy.hangman.controller;
 
 import backend.academy.hangman.model.api.GameModel;
-import backend.academy.hangman.model.data.GAME_LEVEL;
+import backend.academy.hangman.model.data.GameLevel;
 import backend.academy.hangman.view.View;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class GameControllerImpl implements GameController {
 
-    private GAME_LEVEL difficulty = GAME_LEVEL.EASY;
+    private GameLevel difficulty = GameLevel.EASY;
     private String category;
     private final GameModel gameModel;
     private final View view;
@@ -29,22 +29,22 @@ public class GameControllerImpl implements GameController {
                         case 1 -> state = GameState.GAME;
                         case 2 -> state = GameState.DIFFICULTY;
                         case 3 -> state = GameState.CATEGORY;
-                        case 4 -> System.exit(0);
+                        case 4 -> throw new RuntimeException("Close the game");
                         default -> view.printError("Invalid command");
                     }
                 }
                 case DIFFICULTY -> {
                     switch (playerCommand) {
                         case 1 -> {
-                            difficulty = GAME_LEVEL.EASY;
+                            difficulty = GameLevel.EASY;
                             state = GameState.MAIN_MENU;
                         }
                         case 2 -> {
-                            difficulty = GAME_LEVEL.MEDIUM;
+                            difficulty = GameLevel.MEDIUM;
                             state = GameState.MAIN_MENU;
                         }
                         case 3 -> {
-                            difficulty = GAME_LEVEL.HIGH;
+                            difficulty = GameLevel.HIGH;
                             state = GameState.MAIN_MENU;
                         }
                         default -> view.printError("Invalid command");

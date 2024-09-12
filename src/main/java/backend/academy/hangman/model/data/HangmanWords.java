@@ -17,14 +17,14 @@ public record HangmanWords(Map<String, Category> categories) implements WordsRep
     }
 
     @Override
-    public Word getWord(GAME_LEVEL level, String category) {
+    public Word getWord(GameLevel level, String category) {
         return categories.get(category).getRandomWordFromCategory(level);
     }
 
     @Override
-    public Word getRandomCategoryWord(GAME_LEVEL level) {
+    public Word getRandomCategoryWord(GameLevel level) {
         if (categories.isEmpty()) {
-            log.error("Список слов не содержит ни одной категории");
+            log.error("Список слов не содержит ни одной категории, возможно файл с ресурсами пуст");
             throw new SourceLoadException("Список слов не содержит ни одной категории");
         }
 

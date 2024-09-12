@@ -5,7 +5,7 @@ import static backend.academy.hangman.util.RandomGenerator.getRandomNumber;
 
 record Category(List<Word> easy, List<Word> medium, List<Word> hard) {
 
-    Word getRandomWordFromCategory(GAME_LEVEL level) {
+    Word getRandomWordFromCategory(GameLevel level) {
         return switch (level) {
             case EASY -> easy.get(getRandomNumber() % easy.size());
             case MEDIUM -> medium.get(getRandomNumber() % medium.size());
