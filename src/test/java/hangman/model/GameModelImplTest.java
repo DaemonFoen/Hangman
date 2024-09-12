@@ -36,7 +36,7 @@ class GameModelImplTest {
 
         Session testSession = gameModel.start(GameLevel.HIGH, "animals");
 
-        assertTrue(wordsInAnimalCategoryWithHighGameLevel.contains(testSession.word()));
+        assertTrue(wordsInAnimalCategoryWithHighGameLevel.contains(testSession.word().toLowerCase()));
     }
 
     @Test
