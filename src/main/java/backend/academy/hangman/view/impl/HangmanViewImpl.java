@@ -1,7 +1,8 @@
-package backend.academy.hangman.view;
+package backend.academy.hangman.view.impl;
 
-import backend.academy.hangman.controller.GameState;
-import backend.academy.hangman.controller.Session;
+import backend.academy.hangman.controller.impl.GameState;
+import backend.academy.hangman.controller.impl.SessionDTO;
+import backend.academy.hangman.view.View;
 import java.io.PrintWriter;
 import java.util.List;
 import lombok.extern.log4j.Log4j2;
@@ -10,7 +11,7 @@ import org.jline.terminal.Terminal;
 import org.jline.utils.InfoCmp.Capability;
 
 @Log4j2
-public class HangmanView implements View {
+public class HangmanViewImpl implements View {
 
     private final Terminal terminal;
 
@@ -18,7 +19,7 @@ public class HangmanView implements View {
 
     private final PrintWriter writer;
 
-    public HangmanView(Terminal terminal, LineReader lineReader, PrintWriter writer) {
+    public HangmanViewImpl(Terminal terminal, LineReader lineReader, PrintWriter writer) {
         this.terminal = terminal;
         this.lineReader = lineReader;
         this.writer = writer;
@@ -33,9 +34,9 @@ public class HangmanView implements View {
     public int drawMenu(GameState state, List<String> categories) {
         while (true) {
             switch (state) {
-                case MAIN_MENU -> writer.println(Screens.MENU);
-                case DIFFICULTY -> writer.println(Screens.DIFFICULT_MENU);
-                case CATEGORY -> writer.println(Screens.getCategoryMenu(categories));
+                case MAIN_MENU -> writer.println(HangmanDrawUtils.MENU);
+                case DIFFICULTY -> writer.println(HangmanDrawUtils.DIFFICULT_MENU);
+                case CATEGORY -> writer.println(HangmanDrawUtils.getCategoryMenu(categories));
                 default -> throw new IllegalStateException("State GAME cannot be in main menu");
             }
             try {
@@ -51,28 +52,28 @@ public class HangmanView implements View {
     }
 
     @Override
-    public Character drawGame(Session session) {
-        writer.println(Screens.getGameView(session));
+    public Character drawGame(SessionDTO sessionDTO) {
+        writer.println(HangmanDrawUtils.getGameView(sessionDTO));
 
         while (true) {
             String ans = lineReader.readLine();
             if (ans.length() == 1 && Character.isLetter(ans.toCharArray()[0])) {
-                if (!session.usedChars().contains(Character.toUpperCase(ans.toCharArray()[0]))) {
+                if (!sessionDTO.usedChars().contains(Character.toUpperCase(ans.toCharArray()[0]))) {
                     return Character.toUpperCase(ans.toCharArray()[0]);
                 } else {
-                    writer.println(Screens.getGameView(session));
+                    writer.println(HangmanDrawUtils.getGameView(sessionDTO));
                     printError("Letter is already in use");
                 }
             } else {
-                writer.println(Screens.getGameView(session));
+                writer.println(HangmanDrawUtils.getGameView(sessionDTO));
                 printError("Incorrect answer, only letters are valid values. Try again.");
             }
         }
     }
 
     @Override
-    public Character drawEnd(Session session, boolean isWin) {
-        writer.println(Screens.getEndView(session, isWin));
+    public Character drawEnd(SessionDTO sessionDTO, boolean isWin) {
+        writer.println(HangmanDrawUtils.getEndView(sessionDTO, isWin));
 
         while (true) {
             String ans = lineReader.readLine();
@@ -81,7 +82,7 @@ public class HangmanView implements View {
                 || Character.toUpperCase(ans.toCharArray()[0]) == 'N')) {
                 return Character.toUpperCase(ans.toCharArray()[0]);
             } else {
-                writer.println(Screens.getEndView(session, isWin));
+                writer.println(HangmanDrawUtils.getEndView(sessionDTO, isWin));
                 printError("Incorrect answer. Try again.");
             }
         }

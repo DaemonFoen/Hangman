@@ -1,13 +1,13 @@
-package backend.academy.hangman.view;
+package backend.academy.hangman.view.impl;
 
-import backend.academy.hangman.controller.Session;
+import backend.academy.hangman.controller.impl.SessionDTO;
 import java.util.List;
 import java.util.Set;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
 @SuppressWarnings("all")
-public class Screens {
+public class HangmanDrawUtils {
 
     private static final String[] STAGES = {
         """
@@ -125,47 +125,47 @@ public class Screens {
                 """;
     }
 
-    public static String getGameView(Session session) {
+    public static String getGameView(SessionDTO sessionDTO) {
         return """
             #########################################################
             #                                                       #
             #                === Hangman Game ===                   #
             #                                                       #
-            """ + STAGES[STAGES.length - 1 - session.attempts()] + """
+            """ + STAGES[STAGES.length - 1 - sessionDTO.attempts()] + """
             #                                                       #
-            """ + drawWord(session.word(), session.usedChars()) +
+            """ + drawWord(sessionDTO.word(), sessionDTO.usedChars()) +
             """
                 #                                                       #
-                """ + drawAlphabetDisplay(session.usedChars()) +
+                """ + drawAlphabetDisplay(sessionDTO.usedChars()) +
             """
                 #                                                       #
-                """ + drawAttempts(session.attempts()) +
+                """ + drawAttempts(sessionDTO.attempts()) +
             """
                 #                                                       #
-                """ + (session.attempts() > 3 ? "" : drawHint(session.hint())) +
+                """ + (sessionDTO.attempts() > 3 ? "" : drawHint(sessionDTO.hint())) +
             """
                 #                                                       #
                 #########################################################
                 """;
     }
 
-    public static String getEndView(Session session, boolean isWin) {
+    public static String getEndView(SessionDTO sessionDTO, boolean isWin) {
         return """
             #########################################################
             #                                                       #
             #                === Hangman Game ===                   #
             #                                                       #
-            """ + STAGES[STAGES.length - 1 - session.attempts()] + """
+            """ + STAGES[STAGES.length - 1 - sessionDTO.attempts()] + """
             #                                                       #
-            """ + drawWord(session.word(), session.usedChars())
+            """ + drawWord(sessionDTO.word(), sessionDTO.usedChars())
             +
             """
                 #                                                       #
-                """ + drawAlphabetDisplay(session.usedChars())
+                """ + drawAlphabetDisplay(sessionDTO.usedChars())
             +
             """
                 #                                                       #
-                """ + drawAttempts(session.attempts())
+                """ + drawAttempts(sessionDTO.attempts())
             +
             """
                 #                                                       #

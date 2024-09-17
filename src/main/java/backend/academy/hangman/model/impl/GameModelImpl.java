@@ -59,7 +59,7 @@ public class GameModelImpl implements GameModel {
     }
 
     @Override
-    public GameModel updateGameState(int input) throws InvalidInputException {
+    public void updateGameState(int input) throws InvalidInputException {
         gameState = switch (gameState) {
             case MAIN_MENU -> processMainMenuState(input);
             case DIFFICULTY -> processDifficultyState(input);
@@ -69,9 +69,9 @@ public class GameModelImpl implements GameModel {
         if (gameState == GameState.CLOSE) {
             System.exit(0);
         }
-        return this;
     }
 
+    @SuppressWarnings("all")
     private GameState processCategoryState(int input) throws InvalidInputException {
         try {
             category = getCategories().get(input - 1);

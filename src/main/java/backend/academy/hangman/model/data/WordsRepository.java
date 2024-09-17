@@ -1,7 +1,7 @@
-package backend.academy.hangman.model.data.api;
+package backend.academy.hangman.model.data;
 
-import backend.academy.hangman.model.data.GameLevel;
-import backend.academy.hangman.model.data.Word;
+import backend.academy.hangman.model.data.impl.GameLevel;
+import backend.academy.hangman.model.data.impl.Word;
 import java.util.List;
 
 public interface WordsRepository {

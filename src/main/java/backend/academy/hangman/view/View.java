@@ -1,16 +1,16 @@
 package backend.academy.hangman.view;
 
-import backend.academy.hangman.controller.GameState;
-import backend.academy.hangman.controller.Session;
+import backend.academy.hangman.controller.impl.GameState;
+import backend.academy.hangman.controller.impl.SessionDTO;
 import java.util.List;
 
 public interface View {
 
     int drawMenu(GameState state, List<String> categorise);
 
-    Character drawGame(Session session);
+    Character drawGame(SessionDTO sessionDTO);
 
-    Character drawEnd(Session session, boolean isWin);
+    Character drawEnd(SessionDTO sessionDTO, boolean isWin);
 
     void printError(String error);
 }

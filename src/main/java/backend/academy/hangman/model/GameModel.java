@@ -17,5 +17,5 @@ public interface GameModel {
 
     GameState getGameState();
 
-    GameModel updateGameState(int input) throws InvalidInputException;
+    void updateGameState(int input) throws InvalidInputException;
 }

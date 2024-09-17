@@ -1,7 +1,7 @@
 package hangman.util;
 
-import backend.academy.hangman.model.data.GameLevel;
-import backend.academy.hangman.model.data.HangmanWords;
+import backend.academy.hangman.model.data.impl.GameLevel;
+import backend.academy.hangman.model.data.impl.HangmanWords;
 import backend.academy.hangman.util.SourceLoader;
 import java.util.Arrays;
 import java.util.List;

@@ -1,6 +1,7 @@
 package hangman.controller;
 
 import backend.academy.hangman.controller.impl.GameControllerImpl;
+import backend.academy.hangman.controller.impl.GameState;
 import backend.academy.hangman.controller.impl.SessionDTO;
 import backend.academy.hangman.model.GameModel;
 import backend.academy.hangman.view.View;
@@ -35,7 +36,7 @@ class GameControllerImplTest {
         when(gameModel.start()).thenReturn(sessionDTOMock);
         when(sessionDTOMock.attempts()).thenReturn(1);
         when(gameModel.gameIsWon()).thenReturn(true);
-        when(view.drawMenu(any(), any())).thenReturn(1);
+        when(gameModel.getGameState()).thenReturn(GameState.GAME);
         when(view.drawEnd(any(), eq(true))).thenReturn('Y');
 
         boolean result = gameController.start();
@@ -51,7 +52,7 @@ class GameControllerImplTest {
         when(gameModel.start()).thenReturn(sessionDTOMock);
         when(sessionDTOMock.attempts()).thenReturn(0);
         when(gameModel.gameIsWon()).thenReturn(false);
-        when(view.drawMenu(any(), any())).thenReturn(1);
+        when(gameModel.getGameState()).thenReturn(GameState.GAME);
         when(view.drawEnd(any(), eq(false))).thenReturn('n');
 
         boolean result = gameController.start();

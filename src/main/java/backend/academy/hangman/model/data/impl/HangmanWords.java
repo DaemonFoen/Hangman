@@ -1,7 +1,7 @@
-package backend.academy.hangman.model.data;
+package backend.academy.hangman.model.data.impl;
 
 import backend.academy.hangman.exception.SourceLoadException;
-import backend.academy.hangman.model.data.api.WordsRepository;
+import backend.academy.hangman.model.data.WordsRepository;
 import com.beust.jcommander.internal.Lists;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +18,7 @@ public record HangmanWords(Map<String, Category> categories) implements WordsRep
 
     @Override
     public Word getWord(GameLevel level, String category) {
-        return categories.get(category).getRandomWordFromCategory(level);
+        return getRandomWordFromCategory(level, categories.get(category));
     }
 
     @Override
@@ -35,6 +35,14 @@ public record HangmanWords(Map<String, Category> categories) implements WordsRep
             random--;
         }
 
-        return categories.get(iterator.next()).getRandomWordFromCategory(level);
+        return getRandomWordFromCategory(level, categories.get(iterator.next()));
+    }
+
+    private Word getRandomWordFromCategory(GameLevel level, Category category) {
+        return switch (level) {
+            case EASY -> category.easy().get(getRandomNumber() % category.easy().size());
+            case MEDIUM -> category.medium().get(getRandomNumber() % category.medium().size());
+            case HIGH -> category.hard().get(getRandomNumber() % category.hard().size());
+        };
     }
 }

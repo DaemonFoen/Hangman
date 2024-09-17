@@ -1,6 +1,6 @@
 package backend.academy.hangman.util;
 
-import backend.academy.hangman.model.data.HangmanWords;
+import backend.academy.hangman.model.data.impl.HangmanWords;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
