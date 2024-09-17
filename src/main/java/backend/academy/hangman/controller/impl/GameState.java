@@ -1,8 +1,9 @@
-package backend.academy.hangman.controller;
+package backend.academy.hangman.controller.impl;
 
 public enum GameState {
     MAIN_MENU,
     DIFFICULTY,
     CATEGORY,
-    GAME
+    GAME,
+    CLOSE
 }

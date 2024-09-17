@@ -1,8 +1,8 @@
 package hangman.controller;
 
-import backend.academy.hangman.controller.GameControllerImpl;
-import backend.academy.hangman.controller.Session;
-import backend.academy.hangman.model.api.GameModel;
+import backend.academy.hangman.controller.impl.GameControllerImpl;
+import backend.academy.hangman.controller.impl.SessionDTO;
+import backend.academy.hangman.model.GameModel;
 import backend.academy.hangman.view.View;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,9 +31,9 @@ class GameControllerImplTest {
 
     @Test
     void testStartGameWin() {
-        Session sessionMock = mock(Session.class);
-        when(gameModel.start(any(), any())).thenReturn(sessionMock);
-        when(sessionMock.attempts()).thenReturn(1);
+        SessionDTO sessionDTOMock = mock(SessionDTO.class);
+        when(gameModel.start()).thenReturn(sessionDTOMock);
+        when(sessionDTOMock.attempts()).thenReturn(1);
         when(gameModel.gameIsWon()).thenReturn(true);
         when(view.drawMenu(any(), any())).thenReturn(1);
         when(view.drawEnd(any(), eq(true))).thenReturn('Y');
@@ -41,15 +41,15 @@ class GameControllerImplTest {
         boolean result = gameController.start();
 
         assertTrue(result);
-        verify(gameModel).start(any(), any());
+        verify(gameModel).start();
         verify(view).drawEnd(any(), eq(true));
     }
 
     @Test
     void testStartGameLose() {
-        Session sessionMock = mock(Session.class);
-        when(gameModel.start(any(), any())).thenReturn(sessionMock);
-        when(sessionMock.attempts()).thenReturn(0);
+        SessionDTO sessionDTOMock = mock(SessionDTO.class);
+        when(gameModel.start()).thenReturn(sessionDTOMock);
+        when(sessionDTOMock.attempts()).thenReturn(0);
         when(gameModel.gameIsWon()).thenReturn(false);
         when(view.drawMenu(any(), any())).thenReturn(1);
         when(view.drawEnd(any(), eq(false))).thenReturn('n');
@@ -57,7 +57,7 @@ class GameControllerImplTest {
         boolean result = gameController.start();
 
         assertFalse(result);
-        verify(gameModel).start(any(), any());
+        verify(gameModel).start();
         verify(view).drawEnd(any(), eq(false));
     }
 

@@ -1,4 +1,4 @@
-package backend.academy.hangman.model.data;
+package backend.academy.hangman.model.data.impl;
 
 import java.util.List;
 import static backend.academy.hangman.util.RandomGenerator.getRandomNumber;

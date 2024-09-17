@@ -1,12 +1,12 @@
-package backend.academy.hangman.model;
+package backend.academy.hangman.model.impl;
 
-import backend.academy.hangman.model.data.Word;
+import backend.academy.hangman.model.data.impl.Word;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.Getter;
 
 @Getter
-public class State {
+public class SessionState {
 
     private final String word;
     private final String hint;
@@ -14,14 +14,14 @@ public class State {
     private int attempts;
     private final Set<Character> usedChars = new HashSet<>();
 
-    public State(Word word, int attempts) {
+    public SessionState(Word word, int attempts) {
         this.word = word.word().toUpperCase();
         this.hint = word.hint();
         this.attempts = attempts;
         this.wordCharacters = getWordCharacters(this.word.toCharArray());
     }
 
-    public State process(Character answer) {
+    public SessionState process(Character answer) {
         usedChars.add(answer);
         if (!wordContainChar(answer)) {
             attempts--;

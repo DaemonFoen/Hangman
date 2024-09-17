@@ -1,8 +1,8 @@
 package hangman.model;
 
-import backend.academy.hangman.controller.Session;
-import backend.academy.hangman.model.GameModelImpl;
-import backend.academy.hangman.model.data.GameLevel;
+import backend.academy.hangman.controller.impl.SessionDTO;
+import backend.academy.hangman.exception.InvalidInputException;
+import backend.academy.hangman.model.impl.GameModelImpl;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,30 +30,43 @@ class GameModelImplTest {
     }
 
     @Test
-    void testStartWithCategory() {
+    void testStartWithCategory() throws InvalidInputException {
         List<String> wordsInAnimalCategoryWithHighGameLevel =
             Arrays.asList("crocodile", "chimpanzee", "hippopotamus", "rhinoceros", "platypus");
 
-        Session testSession = gameModel.start(GameLevel.HIGH, "animals");
+        //Set animal category
+        gameModel.updateGameState(3);
+        gameModel.updateGameState(1);
 
-        assertTrue(wordsInAnimalCategoryWithHighGameLevel.contains(testSession.word().toLowerCase()));
+        //set game leve: hard
+        gameModel.updateGameState(2);
+        gameModel.updateGameState(3);
+
+        SessionDTO testSessionDTO = gameModel.start();
+
+        assertTrue(wordsInAnimalCategoryWithHighGameLevel.contains(testSessionDTO.word().toLowerCase()));
     }
 
     @Test
-    void testRightInputProcess() {
-        Session beforeProcess = gameModel.start(GameLevel.EASY, "animals");
+    void testRightInputProcess() throws InvalidInputException {
+        //Set animal category
+        gameModel.updateGameState(3);
+        gameModel.updateGameState(1);
+        SessionDTO beforeProcess = gameModel.start();
 
-        Session afterProcess = gameModel.process(beforeProcess.word().charAt(0));
+        SessionDTO afterProcess = gameModel.process(beforeProcess.word().charAt(0));
 
         assertEquals(6, afterProcess.attempts());
         assertTrue(afterProcess.usedChars().contains(beforeProcess.word().charAt(0)));
     }
 
     @Test
-    void testWrongInputProcess() {
-        gameModel.start(GameLevel.EASY, "animals");
+    void testWrongInputProcess() throws InvalidInputException {
+        gameModel.updateGameState(3);
+        gameModel.updateGameState(1);
+        gameModel.start();
 
-        Session afterProcess = gameModel.process('1');
+        SessionDTO afterProcess = gameModel.process('1');
 
         assertEquals(5, afterProcess.attempts());
         assertTrue(afterProcess.usedChars().contains('1'));
@@ -65,8 +78,10 @@ class GameModelImplTest {
     }
 
     @Test
-    void testGameIsWon() {
-        Session state = gameModel.start(GameLevel.EASY, "animals");
+    void testGameIsWon() throws InvalidInputException {
+        gameModel.updateGameState(3);
+        gameModel.updateGameState(1);
+        SessionDTO state = gameModel.start();
 
         for (char c : state.word().toCharArray()) {
             state = gameModel.process(c);
