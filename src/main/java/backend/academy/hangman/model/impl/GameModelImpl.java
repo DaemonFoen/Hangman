@@ -81,6 +81,7 @@ public class GameModelImpl implements GameModel {
         }
     }
 
+    @SuppressWarnings("all")
     private GameState processDifficultyState(int input) throws InvalidInputException {
         level = switch (input) {
             case 1 -> GameLevel.EASY;
@@ -91,6 +92,7 @@ public class GameModelImpl implements GameModel {
         return GameState.MAIN_MENU;
     }
 
+    @SuppressWarnings("all")
     private GameState processMainMenuState(int input) throws InvalidInputException {
         return switch (input) {
             case 1 -> GameState.GAME;
